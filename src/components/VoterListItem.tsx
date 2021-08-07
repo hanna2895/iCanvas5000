@@ -22,7 +22,7 @@ const VoterListItem = ({ onClick, voter }: Props) => {
       <h3>{voter.name}</h3>
       <p>
         Date Canvassed:{" "}
-        {new Date(voter.dateCanvassed.seconds * 1000).toLocaleString("en")}
+        {new Date(voter.dateCanvassed.seconds).toLocaleString("en")}
       </p>
       <p>
         Email: <a href={`mailto:{voter.email}`}>{voter.email}</a>

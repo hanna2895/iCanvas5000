@@ -9,6 +9,10 @@ const VoterFormContainer = styled.div`
 const VoterForm = styled.form`
   max-width: 50%;
 
+  @media (max-width: 576px) {
+    max-width: 100%;
+  }
+
   div {
     display: flex;
     flex-direction: column;
@@ -34,10 +38,16 @@ const VoterForm = styled.form`
   }
 `;
 
+const Success = styled.span`
+  color: green;
+  padding: 1rem;
+`;
+
 const AddVoter = () => {
   const [voterName, setVoterName] = useState<string>("");
   const [voterEmail, setVoterEmail] = useState<string>("");
   const [voterNotes, setVoterNotes] = useState<string>("");
+  const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
   const saveVoter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,7 +59,14 @@ const AddVoter = () => {
         dateCanvassed: { nanoseconds: 0, seconds: Date.now() },
       })
       .then(() => {
-        console.log("Document successfully written!");
+        setVoterName("");
+        setVoterEmail("");
+        setVoterNotes("");
+        setShowSuccess(true);
+
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 3000);
       })
       .catch((error) => {
         console.error("Error writing document: ", error);
@@ -72,6 +89,7 @@ const AddVoter = () => {
           <label>Voter Email</label>
           <input
             onChange={(event) => setVoterEmail(event.target.value)}
+            type="email"
             value={voterEmail}
           />
         </div>
@@ -84,6 +102,7 @@ const AddVoter = () => {
           />
         </div>
         <button type="submit">Save Voter</button>
+        {showSuccess && <Success>Saved!</Success>}
       </VoterForm>
     </VoterFormContainer>
   );
