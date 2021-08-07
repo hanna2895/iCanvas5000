@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Voter } from "../types";
 
@@ -6,7 +5,6 @@ const ListItem = styled.li`
   display: flex;
   flex-direction: column;
   list-style: none;
-  padding: 1rem;
 
   p {
     margin: 0;
@@ -21,10 +19,10 @@ interface Props {
 const VoterListItem = ({ onClick, voter }: Props) => {
   return (
     <ListItem onClick={onClick}>
-      <h2>{voter.name}</h2>
+      <h3>{voter.name}</h3>
       <p>
         Date Canvassed:{" "}
-        {new Date(voter.dateCanvassed.seconds * 1000).toLocaleDateString("en")}
+        {new Date(voter.dateCanvassed.seconds * 1000).toLocaleString("en")}
       </p>
       <p>
         Email: <a href={`mailto:{voter.email}`}>{voter.email}</a>
