@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# iCanvas5000
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to iCanvas5000, your friendly neighborhood canvassing app.
 
-## Available Scripts
+See it in action: [https://icanvas5000.web.app/](https://icanvas5000.web.app/)
 
-In the project directory, you can run:
+## Features
 
-### `yarn start`
+### Landing Page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Landing page - the user can log in with Google to access information about who has already been canvassed, and add new voters.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![landingPage]('/public/landingPage.png)
 
-### `yarn test`
+### All Voters
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A list of everyone who has been canvassed.
 
-### `yarn build`
+![allVoters]('/public/voterList.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### My Voters
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A list of voters who the logged-in user has canvassed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![addedByMe]('/public/addedByMe.png)
 
-### `yarn eject`
+### Add Voter
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Form to add a new voter
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![addVoter]('/public/addVoter.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Local Setup
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This is a React / Typescript app - to run this app locally, please make sure you have the correct files installed.
 
-## Learn More
+This app uses Styled Components for some (very basic) styling, and uses Firebase to handle authentication and data storage.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Clone this react app
+2. run `yarn` to install dependencies
+3. Create `.env` files and add values that can be found in your email from `hannah.werman@gmail.com`. This will allow you to connect to the firebase database and access the list of voters.
+4. run `yarn start` to run start local server
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Deploying New Changes
 
-### Code Splitting
+iCanvas5000 is hosted by Google Firebase at [https://icanvas5000.web.app/](https://icanvas5000.web.app/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To deploy:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. run `yarn build`
+2. run `firebase deploy` (you may need to first run `firebase login` if you are not already logged into your Google account in the terminal you're using)

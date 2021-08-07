@@ -65,7 +65,7 @@ const AddVoter = ({ setAuthError, user }: Props) => {
         email: voterEmail,
         notes: voterNotes,
         dateCanvassed: { nanoseconds: 0, seconds: Date.now() },
-        addedBy: user.uid,
+        addedBy: user?.uid,
       })
       .then(() => {
         setVoterName("");
