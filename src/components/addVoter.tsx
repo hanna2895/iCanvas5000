@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { db } from "../firebase";
-
-const VoterFormContainer = styled.div`
-  padding: 1rem;
-`;
+import firebase from "firebase";
+import { Container } from "./container";
+import { useHistory } from "react-router-dom";
 
 const VoterForm = styled.form`
-  max-width: 50%;
-
   @media (max-width: 576px) {
     max-width: 100%;
   }
@@ -43,11 +40,22 @@ const Success = styled.span`
   padding: 1rem;
 `;
 
-const AddVoter = () => {
+interface Props {
+  setAuthError(error: string): void;
+  user: firebase.User | undefined;
+}
+
+const AddVoter = ({ setAuthError, user }: Props) => {
+  const history = useHistory();
   const [voterName, setVoterName] = useState<string>("");
   const [voterEmail, setVoterEmail] = useState<string>("");
   const [voterNotes, setVoterNotes] = useState<string>("");
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
+
+  if (!user) {
+    history.push("/");
+    setAuthError("You must be logged in to add voters.");
+  }
 
   const saveVoter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -57,6 +65,7 @@ const AddVoter = () => {
         email: voterEmail,
         notes: voterNotes,
         dateCanvassed: { nanoseconds: 0, seconds: Date.now() },
+        addedBy: user.uid,
       })
       .then(() => {
         setVoterName("");
@@ -74,7 +83,7 @@ const AddVoter = () => {
   };
 
   return (
-    <VoterFormContainer>
+    <Container>
       <h2>Add Voter</h2>
 
       <VoterForm onSubmit={(e) => saveVoter(e)}>
@@ -104,7 +113,7 @@ const AddVoter = () => {
         <button type="submit">Save Voter</button>
         {showSuccess && <Success>Saved!</Success>}
       </VoterForm>
-    </VoterFormContainer>
+    </Container>
   );
 };
 
