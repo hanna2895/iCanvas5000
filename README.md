@@ -4,32 +4,6 @@ Welcome to iCanvas5000, your friendly neighborhood canvassing app.
 
 See it in action: [https://icanvas5000.web.app/](https://icanvas5000.web.app/)
 
-## Features
-
-### Landing Page
-
-Landing page - the user can log in with Google to access information about who has already been canvassed, and add new voters.
-
-![landingPage]('/public/landingPage.png)
-
-### All Voters
-
-A list of everyone who has been canvassed.
-
-![allVoters]('/public/voterList.png)
-
-### My Voters
-
-A list of voters who the logged-in user has canvassed.
-
-![addedByMe]('/public/addedByMe.png)
-
-### Add Voter
-
-Form to add a new voter
-
-![addVoter]('/public/addVoter.png)
-
 ## Local Setup
 
 This is a React / Typescript app - to run this app locally, please make sure you have the correct files installed.
